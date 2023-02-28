@@ -18,8 +18,8 @@ SELECT (id, name, species) from animals;
 BEGIN;
 UPDATE animals SET species = 'digmon' WHERE name LIKE '%mon';
 UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
-COMMIT;
 SELECT * FROM animals;
+COMMIT;
 
 BEGIN;
 TRUNCATE animals;
@@ -32,8 +32,8 @@ SAVEPOINT SP1;
 UPDATE animals SET weight_kg = weight_kg * -1;
 ROLLBACK TO SP1;
 UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
-COMMIT;
 SELECT * FROM animals;
+COMMIT;
 
 SELECT COUNT(*) AS "Number of Animals" FROM animals;
 SELECT COUNT(*) AS "Number of Animals no escape" FROM animals WHERE escape_attempts = 0;
