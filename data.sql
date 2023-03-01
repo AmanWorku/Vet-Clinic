@@ -11,3 +11,13 @@ INSERT INTO animals VALUES (8,'Angemon', 'Jul 12, 2005', 1, TRUE, -45);
 INSERT INTO animals VALUES (9,'Boarmon', 'Jun 7, 2005', 7, TRUE, 20.4);
 INSERT INTO animals VALUES (10,'Blossom', 'Oct 13, 1998', 3, TRUE, 17);
 INSERT INTO animals VALUES (11,'Ditto', 'May 14, 2022', 4, TRUE, 22);
+
+INSERT INTO owners (full_name, age) VALUES
+    ('Sam Smith', 34),
+    ('Jennifer Orwell', 19),
+    ('Bob', 45),
+    ('Melody Pond', 77),
+    ('Dean Winchester', 14),
+    ('Jodie Whittaker', 38);
+
+INSERT INTO species (name) VALUES ('Pokemon'),('Digimon');
