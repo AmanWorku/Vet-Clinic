@@ -12,3 +12,22 @@ CREATE TABLE animals (
 );
 
 ALTER TABLE animals ADD species varchar(150);
+
+CREATE TABLE owners (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(150),
+    age INT
+);
+
+CREATE TABLE species (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150)
+);
+
+CREATE SEQUENCE IF NOT EXISTS animals_id_seq;
+SELECT SETVAL('animals_id_seq',(SELECT max(id) FROM animals));
+ALTER TABLE animals
+ALTER COLUMN id
+SET DEFAULT nextval('animals_id_seq'::regclass);
+ALTER SEQUENCE animals_id_seq OWNED BY animals.id;
+
