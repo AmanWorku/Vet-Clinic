@@ -27,7 +27,21 @@ CREATE TABLE species (
 CREATE SEQUENCE IF NOT EXISTS animals_id_seq;
 SELECT SETVAL('animals_id_seq',(SELECT max(id) FROM animals));
 ALTER TABLE animals
-ALTER COLUMN id
-SET DEFAULT nextval('animals_id_seq'::regclass);
+    ALTER COLUMN id
+    SET DEFAULT nextval('animals_id_seq'::regclass);
 ALTER SEQUENCE animals_id_seq OWNED BY animals.id;
+
+ALTER TABLE animals DROP COLUMN species;
+
+ALTER TABLE animals
+    ADD COLUMN IF NOT EXISTS species_id INT;
+
+ALTER TABLE animals
+    ADD CONSTRAINT fk_species_id FOREIGN KEY (species_id) REFERENCES species(id);
+
+ALTER TABLE animals
+    ADD COLUMN IF NOT EXISTS owner_id INT;
+    
+ALTER TABLE animals
+    ADD CONSTRAINT fk_owner_id FOREIGN KEY (owner_id) REFERENCES owners(id);
 
