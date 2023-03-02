@@ -39,3 +39,9 @@ INSERT INTO vets (name, age, date_of_graduation) VALUES
 ('Maisy Smith', 26, 'Jan 17, 2019'),
 ('Stephanie Mendez', 64, 'May 4, 1981'),
 ('Jack Harkness', 38, 'Jun 8, 2008');
+
+INSERT INTO specializations (species_id, vet_id) VALUES
+((SELECT id FROM species WHERE name = 'Pokemon'),1),
+((SELECT id FROM species WHERE name = 'Digimon'),3),
+((SELECT id FROM species WHERE name = 'Pokemon'),3),
+((SELECT id FROM species WHERE name = 'Digimon'),4);
