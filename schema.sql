@@ -63,6 +63,3 @@ vet_id INT REFERENCES vets(id),
 date DATE,
 PRIMARY KEY (id));
 
-SELECT vets.name, species.name FROM vets
-LEFT JOIN specializations ON vets.id = specializations.vet_id
-LEFT JOIN species ON species.id = specializations.species_id;
