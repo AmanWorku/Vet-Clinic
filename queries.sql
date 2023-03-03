@@ -101,3 +101,8 @@ JOIN visits ON animals.id = visits.animal_id
 WHERE visits.vet_id IN(SELECT id FROM vets WHERE name = 'Maisy Smith')
 ORDER BY visits.date ASC LIMIT 1;
 
+SELECT animals.* AS animal_data, vets.* AS vet_data, visits.date
+FROM animals
+INNER JOIN visits ON animals.id = visits.animal_id
+INNER JOIN vets ON visits.vet_id = vets.id
+WHERE visits.date = (SELECT MAX(date) FROM visits);
