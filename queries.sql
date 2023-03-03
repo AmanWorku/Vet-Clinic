@@ -94,3 +94,10 @@ FROM animals
 JOIN visits ON animals.id = visits.animal_id
 GROUP BY animals.id ORDER BY number_of_visits
 DESC LIMIT 1; 
+
+SELECT animals.name, visits.date
+FROM animals
+JOIN visits ON animals.id = visits.animal_id
+WHERE visits.vet_id IN(SELECT id FROM vets WHERE name = 'Maisy Smith')
+ORDER BY visits.date ASC LIMIT 1;
+
