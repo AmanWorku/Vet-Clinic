@@ -106,3 +106,10 @@ FROM animals
 INNER JOIN visits ON animals.id = visits.animal_id
 INNER JOIN vets ON visits.vet_id = vets.id
 WHERE visits.date = (SELECT MAX(date) FROM visits);
+
+SELECT COUNT (*) AS number_of_visits FROM visits 
+INNER JOIN vets ON visits.vet_id = vets.id
+INNER JOIN animals ON visits.animal_id = animals.id
+LEFT JOIN specializations ON vets.id = specializations.vet_id 
+AND animals.species_id = specializations.species_id
+WHERE specializations.species_id IS NULL;
