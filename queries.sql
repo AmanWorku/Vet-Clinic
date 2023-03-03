@@ -113,3 +113,9 @@ INNER JOIN animals ON visits.animal_id = animals.id
 LEFT JOIN specializations ON vets.id = specializations.vet_id 
 AND animals.species_id = specializations.species_id
 WHERE specializations.species_id IS NULL;
+
+SELECT species.name FROM animals
+INNER JOIN visits ON animals.id = visits.animal_id
+INNER JOIN species ON animals.species_id = species.id
+WHERE visits.vet_id IN (SELECT id FROM vets WHERE name ILIKE '%maisy smith%')
+GROUP BY species.id ORDER BY COUNT(*) DESC LIMIT 1;
